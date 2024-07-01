@@ -8,4 +8,5 @@ public class Gol {
     private int minuto;
     private Partido partido;
     // Getters, setters, y constructores
+    public 
 }

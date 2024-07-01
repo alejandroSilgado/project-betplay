@@ -15,7 +15,8 @@ public class main {
             limpiarPantalla();
             Scanner scanner = new Scanner(System.in);
             System.out.println("---------------Sistema de ingreso plataforma de Betplay--------------------------");
-            System.out.println("1. Ingresar");
+            System.out.println("1. Ingresar con cuenta existente");
+            System.out.println("2. Crear cuenta ");
             System.out.println("2. Salir");
             System.out.println("Ingrese una opción: " );
             int opcion = scanner.nextInt();
@@ -26,6 +27,8 @@ public class main {
                     sistemaIngreso(scanner);
                     break;
                 case 2:
+                    System.exit(0);
+                case 3:
                     System.exit(0);
                 default:
                     System.out.println("Opción no válida. Intente de nuevo.");

@@ -1,6 +1,8 @@
 package model;
+import java.util.ArrayList;
+import java.util.List;
 
-class Partido {
+public class Partido {
     private int id;
     private String equipoLocal;
     private String equipoVisitante;
@@ -10,9 +12,9 @@ class Partido {
     private Resultado resultado;
     private Estadio estadio;
     private int entradasDisponibles;
-    private List<Entrada>
+    private List<Entrada> entradasVendidas;
 
-    public Partido(int id, String equipoLocal, String equipoVisitante, Estadio estadio) {
+    public void Partido(int id, String equipoLocal, String equipoVisitante, Estadio estadio) {
     this.id = id;
     this.equipoLocal = equipoLocal;
     this.equipoVisitante = equipoVisitante;
