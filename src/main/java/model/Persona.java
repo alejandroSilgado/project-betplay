@@ -3,20 +3,10 @@ package model;
 public class Persona {
     private int id;
     private String nombre;
-    private String apellido;
     private int edad;
 
-    public Person() {
-    }
-
-    public Person(int id, String nombre, String apellido, int edad) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.edad = edad;
-    }
-
-    public int getId() {  
+    // Getters y setters
+    public int getId() {
         return id;
     }
 
@@ -32,18 +22,20 @@ public class Persona {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
     public int getEdad() {
         return edad;
     }
 
     public void setEdad(int edad) {
         this.edad = edad;
+    }
+
+    // Constructor
+    public Persona(int id, String nombre, int edad) {
+        this.id = id;
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    public Persona() {}
 }
