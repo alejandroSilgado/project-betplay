@@ -8,11 +8,11 @@ public class viewAdministrador {
             Scanner scanner = new Scanner(System.in);
             main.limpiarPantalla();
             System.out.println("----------Bienvenido al sistema de organización para administradores Betplay---------------");
-            System.out.println("1. Gestión de Equipos y Jugadores ");
-            System.out.println("2. Programación y Resultados de Partidos ");
-            System.out.println("3. Gestión de Lesiones y Rendimiento ");
-            System.out.println("4. Entrenamientos y Convocatorias");
-            System.out.println("5. Transferencias de Jugadores ");
+            System.out.println("1. Gestión de Equipos y Jugadores ");// YA ESTA FUNCIONAL 
+            System.out.println("2. Programación y Resultados de Partidos ");// YA ESTA FUNCIONAL 
+            System.out.println("3. Gestión de Lesiones y Rendimiento ");// YA ESTA FUNCIONAL 
+            System.out.println("4. Entrenamientos y Convocatorias"); // YA ESTA FUNCIONAL 
+            System.out.println("5. Transferencias de Jugadores "); 
             System.out.println("6. Venta de Entradas y Patrocinios ");
             System.out.println("7. Comunicaciones y Relaciones Públicas ");
             System.out.println("8. Estadísticas y Informes ");

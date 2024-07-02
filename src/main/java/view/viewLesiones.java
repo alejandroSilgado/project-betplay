@@ -2,6 +2,7 @@ package view;
 
 import java.util.Scanner;
 import controlador.main;
+import model.lesionesManager;
 
 public class viewLesiones {
     public static void menuLesiones() {
@@ -22,10 +23,11 @@ public class viewLesiones {
                     registrarLesiones(scanner);
                     break;
                 case 2:
-                    seguimientoRendimiento(scanner);
-                    break;
+                    lesionesManager.seguimientoRendimiento(scanner);
+                    break;  
                 case 3:
                     System.out.println("Saliendo...");
+                    scanner.close();
                     return;
                 default:
                     System.out.println("Opción no válida. Inténtalo de nuevo.");
@@ -35,7 +37,7 @@ public class viewLesiones {
 
     private static void registrarLesiones(Scanner scanner) {
         while (true) {
-        
+
             main.limpiarPantalla();
             System.out.println("----------------Lesiones----------------");
             System.out.println("1. Crear lesiones");
@@ -49,13 +51,13 @@ public class viewLesiones {
 
             switch (opcion) {
                 case 1:
-                    crearLesiones(scanner);
+                    lesionesManager.crearLesiones(scanner);
                     break;
                 case 2:
-                    editarLesiones(scanner);
+                    lesionesManager.editarLesiones(scanner);
                     break;
                 case 3:
-                    eliminarLesiones(scanner);
+                    lesionesManager.eliminarLesiones(scanner);
                     break;
                 case 4:
                     System.out.println("Saliendo...");
@@ -64,21 +66,5 @@ public class viewLesiones {
                     System.out.println("Opción no válida. Inténtalo de nuevo.");
             }
         }
-    }
-
-    private static void seguimientoRendimiento(Scanner scanner) {
-        // Implementa la lógica para el seguimiento de rendimiento
-    }
-
-    private static void crearLesiones(Scanner scanner) {
-        // Implementa la lógica para crear lesiones
-    }
-
-    private static void editarLesiones(Scanner scanner) {
-        // Implementa la lógica para editar lesiones
-    }
-
-    private static void eliminarLesiones(Scanner scanner) {
-        // Implementa la lógica para eliminar lesiones
     }
 }

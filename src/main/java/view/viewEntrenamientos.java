@@ -2,6 +2,7 @@ package view;
 
 import java.util.Scanner;
 import controlador.main;
+import model.entrenamientosManager;
 
 public class viewEntrenamientos {
     public static void menuEntrenamientos() {
@@ -21,9 +22,11 @@ public class viewEntrenamientos {
 
             switch (opcion) {
                 case 1:
-                    registrarEntrenamientos(scanner);
+                    entrenamientosManager.registrarEntrenamientos(scanner);
+                    break;
                 case 2:
-                    realizarNombramientos(scanner);
+                    entrenamientosManager.realizarNombramientos(scanner);
+                    break;
                 case 3:
                     System.out.println("Saliendo...");
                     return;
@@ -32,12 +35,7 @@ public class viewEntrenamientos {
             }
         }
     }
-    private static void registrarEntrenamientos(Scanner scanner) {
 
-    }
-    private static void realizarNombramientos(Scanner scanner) {
-
-    }
 
 }
 

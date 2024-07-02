@@ -12,7 +12,7 @@ public class viewEstadisticas {
             System.out.println("1. Rendimiento Equipos");
             System.out.println("2. Rendimiento Jugadores ");
             System.out.println("3. Salir");
-
+                
             System.out.println("Opcion:");
             int opcion = scanner.nextInt();
             scanner.nextInt();
