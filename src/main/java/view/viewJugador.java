@@ -28,11 +28,12 @@ public class viewJugador {
                 case 3:
                     jugadorManager.eliminarJugadores(scanner);
                 case 4:
-                    System.out.println("Saliendo...");
                     return;
                 default:
                     System.out.println("Opción no válida. Intente de nuevo.");
             }
+            System.out.println("\nPresiona Enter para continuar...");
+            scanner.nextLine();
         }
     }
 }

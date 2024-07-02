@@ -20,10 +20,11 @@ public class partidosManager {
             + "trustServerCertificate=true;";
 
     public static void programarPartido(Scanner scanner) {
-        main.limpiarPantalla();
-
+        
         try (Connection conn = DriverManager.getConnection(CONNECTION_URL)) {
+            main.limpiarPantalla();
             equiposManager.imprimirEquipos(scanner);
+
             System.out.println("");
             System.out.println("--------------------------------");
             System.out.println("SISTEMA DE CREACION DE PARTIDOS");
@@ -70,9 +71,12 @@ public class partidosManager {
 
     public static void registrarResultados(Scanner scanner) {
         main.limpiarPantalla();
-        System.out.println("SISTEMA DE REGISTRO DE RESULTADOS DE PARTIDOS");
-        System.out.println("Partidos Disponibles:");
-        imprimirPartidos(scanner);
+        imprimirPartidos(scanner);        
+        System.out.println("");
+        System.out.println("------------------------------------");
+        System.out.println("  SISTEMA DE RESULTADOS DE PARTIDOS ");
+        System.out.println("------------------------------------");
+        System.out.println("");
         try (Connection conn = DriverManager.getConnection(CONNECTION_URL)) {
             System.out.println("Ingrese el ID del partido para registrar resultados:");
             Integer partidoId = scanner.nextInt();
@@ -106,8 +110,78 @@ public class partidosManager {
         }
     }
 
+    public static void editarPartido(Scanner scanner) {
+        try (Connection conn = DriverManager.getConnection(CONNECTION_URL)) {
+            main.limpiarPantalla();
+            imprimirPartidos(scanner);
+            System.out.println("");
+            System.out.println("------------------------------------");
+            System.out.println("   SISTEMA DE EDICION DE PARTIDOS   ");
+            System.out.println("------------------------------------");
+            System.out.println("");
+            System.out.println("Ingrese el ID del partido a editar:");
+            int partidoId = scanner.nextInt();
+            scanner.nextLine();
+    
+            System.out.println("Ingrese la nueva fecha para el partido (yyyy-MM-dd):");
+            String nuevaFecha = scanner.nextLine();
+    
+            System.out.println("Ingrese la nueva hora para el partido (HH:mm):");
+            String nuevaHora = scanner.nextLine();
+    
+            System.out.println("Ingrese el nuevo estadio para el partido:");
+            String nuevoEstadio = scanner.nextLine();
+    
+            String sql = "UPDATE Partido SET fecha = ?, hora = ?, estadio = ? WHERE id = ?";
+            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                pstmt.setDate(1, Date.valueOf(nuevaFecha));
+                pstmt.setString(2, nuevaHora);
+                pstmt.setString(3, nuevoEstadio);
+                pstmt.setInt(4, partidoId);
+    
+                int affectedRows = pstmt.executeUpdate();
+                if (affectedRows > 0) {
+                    System.out.println("Partido actualizado correctamente.");
+                } else {
+                    System.out.println("No se pudo actualizar el partido.");
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al editar partido: " + e.getMessage());
+        }
+    }
+    
+    public static void eliminarPartido(Scanner scanner) {
+        try (Connection conn = DriverManager.getConnection(CONNECTION_URL)) {
+            main.limpiarPantalla();
+            imprimirPartidos(scanner);
+            System.out.println("");
+            System.out.println("------------------------------------");
+            System.out.println(" SISTEMA DE ELIMINACIÓN DE PARTIDOS ");
+            System.out.println("------------------------------------");
+            System.out.println("");
+
+            System.out.println("Ingrese el ID del partido a eliminar:");
+            int partidoId = scanner.nextInt();
+            scanner.nextLine();
+    
+            String sql = "DELETE FROM Partido WHERE id = ?";
+            try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                pstmt.setInt(1, partidoId);
+    
+                int affectedRows = pstmt.executeUpdate();
+                if (affectedRows > 0) {
+                    System.out.println("Partido eliminado correctamente.");
+                } else {
+                    System.out.println("No se pudo eliminar el partido.");
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar partido: " + e.getMessage());
+        }
+    }
+    
     public static void imprimirPartidos(Scanner scanner) {
-        main.limpiarPantalla();
         try (Connection conn = DriverManager.getConnection(CONNECTION_URL)) {
             String sql = "SELECT p.id, p.equipoLocal_id, p.equipoVisitante_id, p.fecha, p.hora, " +
                     "e_local.nombre AS nombreLocal, e_visitante.nombre AS nombreVisitante " +
@@ -138,7 +212,6 @@ public class partidosManager {
     }
 
     public static void imprimirResultados(Scanner scanner) {
-        main.limpiarPantalla();
         try (Connection conn = DriverManager.getConnection(CONNECTION_URL)) {
             String sql = "SELECT r.id AS ResultadoID, p.id AS PartidoID, " +
                          "e_local.nombre AS EquipoLocal, e_visitante.nombre AS EquipoVisitante, " +
@@ -170,7 +243,6 @@ public class partidosManager {
         }
     }
     
-
     private static boolean partidoExiste(Connection conn, int partidoId) throws SQLException {
         String sql = "SELECT id FROM Partido WHERE id = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {

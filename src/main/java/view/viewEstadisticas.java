@@ -1,39 +1,42 @@
 package view;
 
 import java.util.Scanner;
-import controlador.main;
+
+import controlador.main; // Asumiendo que controlador.main tiene métodos como limpiarPantalla
+import model.estadisticasManager;
 
 public class viewEstadisticas {
-    public static void menuEstadisticas(){
+
+    public static void menuEstadisticas(Scanner scanner) {
         while (true) {
-            Scanner scanner = new Scanner(System.in);
             main.limpiarPantalla();
-            System.out.println("----------------Estadisticas----------------");
-            System.out.println("1. Rendimiento Equipos");
-            System.out.println("2. Rendimiento Jugadores ");
-            System.out.println("3. Salir");
-                
-            System.out.println("Opcion:");
+            System.out.println("---------------- Estadísticas ----------------");
+            System.out.println("1. Estadísticas por jugador");
+            System.out.println("2. Estadísticas por equipo");
+            System.out.println("3. Estadísticas por temporada");
+            System.out.println("4. Salir");
+            System.out.print("Ingrese una opción: ");
             int opcion = scanner.nextInt();
-            scanner.nextInt();
+            scanner.nextLine(); // Consume the newline character
 
             switch (opcion) {
                 case 1:
-                    rendimientoEquipos(scanner);
+                    estadisticasManager.estadisticasPorJugador(scanner);
+                    break;
                 case 2:
-                    rendimientoJugadores(scanner);
+                    estadisticasManager.estadisticasPorEquipo(scanner);
+                    break;
                 case 3:
-                    System.out.println("Saliendo...");
+                    estadisticasManager.estadisticasPorTemporada(scanner);
+                    break;
+                case 4:
                     return;
                 default:
-                     System.out.println("Opción no válida. Intente de nuevo.");
+                    System.out.println("Opción no válida. Inténtelo de nuevo.");
             }
-        }
-    }
-    private static void rendimientoEquipos(Scanner scanner){
 
-    }
-    private static void rendimientoJugadores(Scanner scanner){
-        
+            System.out.print("Presione Enter para continuar...");
+            scanner.nextLine();
+        }
     }
 }

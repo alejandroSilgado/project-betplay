@@ -2,8 +2,11 @@ package view;
 
 import java.util.Scanner;
 import controlador.main;
+import model.aficionadoManager;
+import model.calendarioManager;
 
 public class viewAficionado {
+    @SuppressWarnings("resource")
     public static void menuAficionados() {
 
         while (true) {
@@ -11,8 +14,9 @@ public class viewAficionado {
             main.limpiarPantalla();
             System.out.println("----------Bienvenido Aficionado---------------");
             System.out.println("1. Compra de Entradas ");
-            System.out.println("2. Patrocinios de aficionados ");
-            System.out.println("3. Salir");
+            System.out.println("2. Modulo de estadisticas ");
+            System.out.println("3. Consultar calendario de partidos");
+            System.out.println("4. Salir");
 
             System.out.println("Opcion:");
 
@@ -21,23 +25,20 @@ public class viewAficionado {
 
             switch (opcion) {
                 case 1:
-                    comprarEntradas(scanner);
+                    aficionadoManager.comprarEntrada(scanner, opcion);
+                    break;
                 case 2:
-                    patrociniosAficionados(scanner);
+                    viewEstadisticas.menuEstadisticas(scanner);
                 case 3:
-                    System.out.println("Saliendo...");
-                    return;
+                    calendarioManager.consultarCalendarioPartidos(scanner);
+                    break;
+                case 4:
+                     return;
                 default:
                      System.out.println("Opción no válida. Intente de nuevo.");
             }
+            System.out.print("Presione Enter para continuar...");
+            scanner.nextLine();
         }
-    }
-
-    private static void comprarEntradas(Scanner scanner) {
-        
-    }
-
-    private static void patrociniosAficionados(Scanner scanner) {
-
     }
 }

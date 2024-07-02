@@ -59,11 +59,12 @@ public class viewEquipo {
                     equiposManager.eliminarEquipos(scanner);
                     break;
                 case 4:
-                    System.out.println("Saliendo....");
                     return;
                 default:
                     System.out.println("Opción no válida. Intente de nuevo.");
             }
+            System.out.print("Presione Enter para continuar...");
+            scanner.nextLine();
         }
     }
 }

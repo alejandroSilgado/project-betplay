@@ -12,8 +12,10 @@ public class viewPartidos {
             main.limpiarPantalla();
             System.out.println("---------------- Bienvenido al sistema de gestión de Partidos ----------------------");
             System.out.println("1. Programar próximos partidos");
-            System.out.println("2. Registrar resultados de partidos");
-            System.out.println("3. Salir");
+            System.out.println("2. Editar partidos");
+            System.out.println("3. Eliminar partidos");
+            System.out.println("4. Registrar resultados de partidos");
+            System.out.println("5. Salir");
 
             System.out.println("Opción:");
             int opcion = scanner.nextInt();
@@ -24,14 +26,21 @@ public class viewPartidos {
                     partidosManager.programarPartido(scanner);
                     break;
                 case 2:
-                    partidosManager.registrarResultados(scanner);
+                    partidosManager.editarPartido(scanner);
                     break;
                 case 3:
-                    System.out.println("Saliendo...");
+                    partidosManager.eliminarPartido(scanner);
+                    break;
+                case 4:
+                    partidosManager.registrarResultados(scanner);
+                    break;
+                case 5:
                     return;
                 default:
                     System.out.println("Opción no válida. Inténtalo de nuevo.");
             }
+            System.out.println("\nPresiona Enter para continuar...");
+            scanner.nextLine();
         }
     }
 }

@@ -18,7 +18,6 @@ public class equiposManager {
             + "trustServerCertificate=true;";
 
     public static void imprimirEquipos(Scanner scanner) {
-        main.limpiarPantalla();
         try (Connection conn = DriverManager.getConnection(CONNECTION_URL)) {
             String sql = "SELECT * FROM Equipo";
             try (Statement stmt = conn.createStatement();

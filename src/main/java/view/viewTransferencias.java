@@ -2,8 +2,10 @@ package view;
 
 import java.util.Scanner;
 import controlador.main;
+import model.transferenciasManager;
 
 public class viewTransferencias {
+    @SuppressWarnings("resource")
     public static void menuTransferencias() {
         while (true) {
             Scanner scanner = new Scanner(System.in);
@@ -12,8 +14,7 @@ public class viewTransferencias {
             System.out.println("1. Registrar transferencia de jugador");
             System.out.println("2. Editar transferencia de jugador");
             System.out.println("3. Eliminar transferencia de jugador");
-            System.out.println("4. Listar transferencias");
-            System.out.println("5. Salir");
+            System.out.println("4. Salir");
 
             System.out.println("Opcion:");
             int opcion = scanner.nextInt();
@@ -21,36 +22,21 @@ public class viewTransferencias {
 
             switch (opcion) {
                 case 1:
-                    registrarTransferencia(scanner);
+                    transferenciasManager.registrarTransferencia(scanner);
                     break;
                 case 2:
-                    editarTransferencia(scanner);
+                    transferenciasManager.editarTransferencia(scanner);
                     break;
                 case 3:
-                    eliminarTransferencia(scanner);
+                    transferenciasManager.eliminarTransferencia(scanner);
                     break;
                 case 4:
-                    listarTransferencias(scanner);
-                    break;
-                case 5:
-                    System.out.println("Saliendo...");
-                    scanner.close();
                     return;
                 default:
                     System.out.println("Opción inválida. Inténtalo de nuevo.");
             }
+            System.out.println("\nPresiona Enter para continuar...");
+            scanner.nextLine();
         }
-    }
-
-    private static void registrarTransferencia(Scanner scanner) {
-    }
-
-    private static void editarTransferencia(Scanner scanner) {
-    }
-
-    private static void eliminarTransferencia(Scanner scanner) {
-    }
-
-    private static void listarTransferencias(Scanner scanner) {
-    }
+    }        
 }

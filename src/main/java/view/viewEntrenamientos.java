@@ -5,6 +5,7 @@ import controlador.main;
 import model.entrenamientosManager;
 
 public class viewEntrenamientos {
+    @SuppressWarnings("resource")
     public static void menuEntrenamientos() {
 
     while (true) {
@@ -28,11 +29,12 @@ public class viewEntrenamientos {
                     entrenamientosManager.realizarNombramientos(scanner);
                     break;
                 case 3:
-                    System.out.println("Saliendo...");
                     return;
                 default:
                     System.out.println("Opción no válida. Intente de nuevo.");
             }
+            System.out.print("Presione Enter para continuar...");
+            scanner.nextLine();
         }
     }
 
